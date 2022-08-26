@@ -37,6 +37,5 @@ def download_playlist(playlist_url: str, download_folder: str) -> None:
         except Exception as exc:
             logger.error(f'File "{file_name}" can not be proceed, skipping...')
             errors.append({'video_url': video_url, 'file_name': file_name, 'errors': [str(exc)]})
-            break
 
     logger.info(f'Skipped: {len(skipped)}, errors: {len(errors)}')
