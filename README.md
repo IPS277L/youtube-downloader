@@ -14,8 +14,9 @@ Python 3.
 
 ## Usage
 
-    python main.py --playlist-url=https://www.youtube.com/playlist?list=PLx0sYbCqOb8TBPRdmBHs5Iftvv9TPboYG --download-folder=music/youtube
+    python main.py --playlist-url=https://www.youtube.com/playlist?list=PLx0sYbCqOb8TBPRdmBHs5Iftvv9TPboYG --download-folder=music/youtube --timeout=10
 
 ### kwargs
-- --playlist-url - YouTube Playlist link, required.
-- --download-folder - folder path where .mp3 will be saved, default value "youtube".
+- --playlist-url - string, required;
+- --download-folder - string, default value "youtube";
+- --timeout - integer, default value "5";
