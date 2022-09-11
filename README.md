@@ -14,9 +14,8 @@ Python 3.
 
 ## Usage
 
-    python main.py --playlist-url=https://www.youtube.com/playlist?list=PLx0sYbCqOb8TBPRdmBHs5Iftvv9TPboYG --download-folder=music/youtube --timeout=10
+    python main.py --playlist-url=https://www.youtube.com/playlist?list=PLx0sYbCqOb8TBPRdmBHs5Iftvv9TPboYG --download-folder=music/youtube
 
 ### kwargs
 - --playlist-url - string, required;
 - --download-folder - string, default value "youtube";
-- --timeout - integer, default value "5";
