@@ -1,6 +1,7 @@
 import logging
 import os
 import sys
+from argparse import Namespace
 
 import enlighten
 from moviepy.audio.io.AudioFileClip import AudioFileClip
@@ -8,17 +9,21 @@ from pathvalidate import sanitize_filename
 from pytube import Playlist
 
 from constants import MimeType, ProcessedType, FileType
+from metadata import attach_mp3_metadata
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 logger = logging.getLogger()
 
 
-def download_playlist(playlist_url: str, download_folder: str) -> None:
+def download_playlist(args: Namespace) -> None:
+    playlist_url = args.playlist_url
+    download_folder = args.download_folder
+
     playlist = Playlist(url=playlist_url)
     logger.info(f'Processing playlist "{playlist.title}" from "{playlist.owner}"')
 
-    manager = enlighten.get_manager()
-    progress_bar = manager.counter(total=playlist.length, desc='Downloading:', unit='video')
+    progress_manager = enlighten.get_manager()
+    progress_bar = progress_manager.counter(total=playlist.length, desc='Downloading:', unit='video')
 
     processed = []
     for video in playlist.videos:
@@ -57,6 +62,8 @@ def download_playlist(playlist_url: str, download_folder: str) -> None:
                 'file_name': file_name,
                 'type': ProcessedType.DOWNLOADED
             }
+
+            attach_mp3_metadata(args=args, file_path=file_path_mp3)
 
         except Exception as exc:
             logger.error(f'File "{file_name}" can not be proceed: {str(exc)}')

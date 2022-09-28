@@ -5,9 +5,14 @@ class FileType:
 
 class MimeType:
     AUDIO_MP4 = 'audio/mp4'
+    IMAGE_JPEG = 'image/jpeg'
 
 
 class ProcessedType:
     SKIPPED = 'skipped'
     DOWNLOADED = 'downloaded'
     ERROR = 'error'
+
+
+class MetadataSource:
+    SPOTIFY = 'spotify'
